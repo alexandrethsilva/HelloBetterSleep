@@ -1,11 +1,10 @@
 import { createStackNavigator } from "react-navigation-stack"
-import { PrimaryNavigator } from "./primary-navigator"
-import {
-} from "../screens" // eslint-disable-line @typescript-eslint/no-unused-vars
+import { WelcomeScreen, BedtimeScreen } from "../screens"
 
 export const RootNavigator = createStackNavigator(
   {
-    primaryStack: { screen: PrimaryNavigator },
+    welcome: { screen: WelcomeScreen },
+    bedtime: { screen: BedtimeScreen },
   },
   {
     headerMode: "none",
