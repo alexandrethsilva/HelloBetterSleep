@@ -21,13 +21,17 @@
     "postinstall": "node ./bin/postInstall",
     "prepare": "npm-run-all patch hack:*",
     "storybook": "start-storybook -p 9001 -c ./storybook",
-    "adb": "adb reverse tcp:9090 tcp:9090 && adb reverse tcp:3000 tcp:3000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:8081 tcp:8081"
+    "adb": "adb reverse tcp:9090 tcp:9090 && adb reverse tcp:3000 tcp:3000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:8081 tcp:8081",
+    "commit": "git-cz"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.5.1",
     "@react-native-community/masked-view": "0.1.5",
     "apisauce": "1.0.3",
+    "commitizen": "4.0.3",
+    "d3-interpolate": "1.4.0",
     "i18n-js": "^3.0.11",
+    "lodash.range": "3.2.0",
     "lodash.throttle": "4.1.1",
     "mobx": "^4.13.0",
     "mobx-react-lite": "^1.4.1",
@@ -42,6 +46,8 @@
     "react-native-safe-area-view": "1.0.0",
     "react-native-screens": "^2.0.0-alpha.6",
     "react-native-splash-screen": "3.1.1",
+    "react-native-svg": "11.0.1",
+    "react-native-vector-icons": "6.6.0",
     "react-navigation": "4.0.10",
     "react-navigation-stack": "2.0.9",
     "reactotron-mst": "^3.1.1",
@@ -64,6 +70,7 @@
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "babel-jest": "^24.1.0",
+    "cz-conventional-changelog": "3.0.2",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",
@@ -166,6 +173,11 @@
       "@typescript-eslint/no-object-literal-type-assertion": 0,
       "@typescript-eslint/no-empty-interface": 0,
       "@typescript-eslint/no-var-requires": 0
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
