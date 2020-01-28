@@ -1,3 +1,4 @@
+require("../app/components/weekday-switch/weekday-switch.story")
 require("../app/components/clock-face/clock-face.story")
 require("../app/components/clock-slider/clock-slider.story")
 require("../app/components/text/text.story")

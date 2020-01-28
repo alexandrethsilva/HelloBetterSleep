@@ -1,15 +1,6 @@
-import { FULL } from "../../styles"
-import {
-  CONTAINER,
-  TITLE_WRAPPER,
-  TITLE,
-  FOOTER,
-  FOOTER_CONTENT,
-  CONTINUE,
-  CONTINUE_TEXT,
-  SCREEN_ICON,
-  TAGLINE,
-} from "./welcome-screen.styles"
+import { commonStyles } from "../../styles"
+import { welcomeScreenStyles } from "./welcome-screen.styles"
+
 import Ionicon from "react-native-vector-icons/Ionicons"
 
 import * as React from "react"
@@ -26,21 +17,25 @@ export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = props 
   ])
 
   return (
-    <View testID="WelcomeScreen" style={FULL}>
+    <View testID="WelcomeScreen" style={commonStyles.FULL}>
       <Wallpaper />
-      <Screen style={CONTAINER} preset="fixed" backgroundColor={color.transparent}>
-        <Ionicon name={"ios-bed"} style={SCREEN_ICON} />
-        <Text style={TITLE_WRAPPER}>
-          <Text style={TITLE} tx="sleepTracking.welcomeScreen.title" />
+      <Screen
+        style={welcomeScreenStyles.CONTAINER}
+        preset="fixed"
+        backgroundColor={color.transparent}
+      >
+        <Ionicon name={"ios-bed"} style={welcomeScreenStyles.SCREEN_ICON} />
+        <Text style={welcomeScreenStyles.TITLE_WRAPPER}>
+          <Text style={welcomeScreenStyles.TITLE} tx="sleepTracking.welcomeScreen.title" />
         </Text>
-        <Text style={TAGLINE} tx="sleepTracking.welcomeScreen.tagline"></Text>
+        <Text style={welcomeScreenStyles.TAGLINE} tx="sleepTracking.welcomeScreen.tagline"></Text>
       </Screen>
-      <SafeAreaView style={FOOTER}>
-        <View style={FOOTER_CONTENT}>
+      <SafeAreaView style={welcomeScreenStyles.FOOTER}>
+        <View style={welcomeScreenStyles.FOOTER_CONTENT}>
           <Button
             testID="next-screen-button"
-            style={CONTINUE}
-            textStyle={CONTINUE_TEXT}
+            style={welcomeScreenStyles.CONTINUE}
+            textStyle={welcomeScreenStyles.CONTINUE_TEXT}
             tx="sleepTracking.welcomeScreen.setup"
             onPress={nextScreen}
           />

@@ -1,32 +1,12 @@
-import { FULL, TEXT } from "../../styles"
-import {
-  CONTAINER,
-  SPACING_LARGE,
-  SPACING_MEDIUM,
-  CLOCK,
-  ROW,
-  CENTER_ITEMS,
-  ROW_AROUND,
-  ROW_BETWEEN,
-  CONTENT,
-  JUSTIFY_START,
-  SCREEN_ICON,
-  SECTION_LABEL,
-  SECTION,
-  WEEKDAY_LABEL,
-  WEEKDAY_ON,
-  WEEKDAY_OFF,
-  SCHEDULE_BEDTIME_LABEL,
-  SCHEDULE_WAKETIME_LABEL,
-  SCHEDULE_HOUR,
-} from "./bedtime-screen.styles"
+import { commonStyles } from "../../styles"
+import { bedtimeScreenStyles } from "./bedtime-screen.styles"
 
 import { ICON_BEDTIME, ICON_WAKETIME } from "./bedtime-screen.icons"
 
 import * as React from "react"
 import { observer } from "mobx-react-lite"
 import { Switch, View } from "react-native"
-import { Screen, Text, Header, Wallpaper, ClockSlider } from "../../components"
+import { Screen, Text, Header, Wallpaper, WeekdaySwitch, ClockSlider } from "../../components"
 import { useStores } from "../../models/root-store"
 import { color } from "../../theme"
 import { NavigationInjectedProps } from "react-navigation"
@@ -41,14 +21,12 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
   const { bedtimeStore } = useStores()
   const { schedule } = bedtimeStore
 
-  const weekdayLabels = ["M", "T", "W", "T", "F", "S", "S"]
-
   console.tron.log(schedule)
   return (
-    <View testID="BedtimeScreen" style={FULL}>
+    <View testID="BedtimeScreen" style={commonStyles.FULL}>
       <Wallpaper />
       <Screen
-        style={{ ...CONTAINER, ...JUSTIFY_START }}
+        style={{ ...bedtimeScreenStyles.CONTAINER, ...bedtimeScreenStyles.JUSTIFY_START }}
         preset="fixed"
         backgroundColor={color.transparent}
       >
@@ -57,47 +35,77 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
           leftIcon="back"
           onLeftPress={goBack}
         />
-        <View style={{ ...CONTENT, ...JUSTIFY_START }}>
-          <View style={ROW}>
-            <Ionicon name={"ios-bed"} style={SCREEN_ICON} />
-            <Text preset="header" tx="sleepTracking.bedtimeScreen.title" style={TEXT} />
+        <View style={{ ...bedtimeScreenStyles.CONTENT, ...bedtimeScreenStyles.JUSTIFY_START }}>
+          <View style={bedtimeScreenStyles.ROW}>
+            <Ionicon name={"ios-bed"} style={bedtimeScreenStyles.SCREEN_ICON} />
+            <Text
+              preset="header"
+              tx="sleepTracking.bedtimeScreen.title"
+              style={commonStyles.TEXT}
+            />
           </View>
-          <View style={{ ...ROW_BETWEEN, ...SECTION }}>
+          <View style={{ ...bedtimeScreenStyles.ROW_BETWEEN, ...bedtimeScreenStyles.SECTION }}>
             <Text tx="sleepTracking.bedtimeScreen.scheduleActivitySwitch"></Text>
             <Switch value={schedule.isActive} onValueChange={schedule.toggleActive} />
           </View>
-          <View style={SPACING_MEDIUM}>
-            <Text tx="sleepTracking.bedtimeScreen.daysOfTheWeek" style={SECTION_LABEL}></Text>
-            <View style={ROW_BETWEEN}>
+          <View style={bedtimeScreenStyles.SPACING_MEDIUM}>
+            <Text
+              tx="sleepTracking.bedtimeScreen.daysOfTheWeek"
+              style={bedtimeScreenStyles.SECTION_LABEL}
+            ></Text>
+            <View style={bedtimeScreenStyles.ROW_BETWEEN}>
               {schedule.weekdays.map((day, index) => (
-                <View
+                <WeekdaySwitch
                   key={index}
-                  style={schedule.isActive ? (day ? WEEKDAY_ON : WEEKDAY_OFF) : WEEKDAY_OFF}
-                  onTouchEnd={() => schedule.isActive && schedule.toggleWeekday(index)}
-                >
-                  <Text style={WEEKDAY_LABEL}>{weekdayLabels[index]}</Text>
-                </View>
+                  isInteractive={schedule.isActive}
+                  isOn={schedule.weekdays[index]}
+                  tx={`sleepTracking.bedtimeScreen.weekdays.${index}`}
+                  onChange={() => schedule.toggleWeekday(index)}
+                />
               ))}
             </View>
           </View>
-          <View style={{ ...ROW_AROUND, ...SPACING_LARGE }}>
-            <View style={CENTER_ITEMS}>
-              <Text tx="sleepTracking.bedtimeScreen.bedTime" style={SCHEDULE_BEDTIME_LABEL}></Text>
-              <Text style={SCHEDULE_HOUR}>
+          <View style={{ ...bedtimeScreenStyles.ROW_AROUND, ...bedtimeScreenStyles.SPACING_LARGE }}>
+            <View style={bedtimeScreenStyles.CENTER_ITEMS}>
+              <Text
+                tx="sleepTracking.bedtimeScreen.bedTime"
+                style={
+                  schedule.isActive
+                    ? bedtimeScreenStyles.SCHEDULE_BEDTIME_LABEL
+                    : { ...bedtimeScreenStyles.SCHEDULE_BEDTIME_LABEL, ...commonStyles.TEXT_MUTED }
+                }
+              ></Text>
+              <Text
+                style={
+                  schedule.isActive
+                    ? bedtimeScreenStyles.SCHEDULE_HOUR
+                    : { ...bedtimeScreenStyles.SCHEDULE_HOUR, ...commonStyles.TEXT_MUTED }
+                }
+              >
                 {schedule.bedTime.h}:{schedule.bedTime.m}
               </Text>
             </View>
-            <View style={CENTER_ITEMS}>
+            <View style={bedtimeScreenStyles.CENTER_ITEMS}>
               <Text
                 tx="sleepTracking.bedtimeScreen.wakeTime"
-                style={SCHEDULE_WAKETIME_LABEL}
+                style={
+                  schedule.isActive
+                    ? bedtimeScreenStyles.SCHEDULE_WAKETIME_LABEL
+                    : { ...bedtimeScreenStyles.SCHEDULE_WAKETIME_LABEL, ...commonStyles.TEXT_MUTED }
+                }
               ></Text>
-              <Text style={SCHEDULE_HOUR}>
+              <Text
+                style={
+                  schedule.isActive
+                    ? bedtimeScreenStyles.SCHEDULE_HOUR
+                    : { ...bedtimeScreenStyles.SCHEDULE_HOUR, ...commonStyles.TEXT_MUTED }
+                }
+              >
                 {schedule.wakeTime.h}:{schedule.wakeTime.m}
               </Text>
             </View>
           </View>
-          <View style={CLOCK}>
+          <View style={bedtimeScreenStyles.CLOCK}>
             <ClockSlider
               angleStart={schedule.start}
               angleLength={schedule.end}

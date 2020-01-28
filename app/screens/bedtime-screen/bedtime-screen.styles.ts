@@ -1,107 +1,94 @@
-import { FULL, TEXT } from "../../styles"
+import { commonStyles } from "../../styles"
 
 import { color, spacing, typography } from "../../theme"
 import { ViewStyle, TextStyle } from "react-native"
 
-export const CONTAINER: ViewStyle = {
-  ...FULL,
-  backgroundColor: color.palette.black,
-  paddingHorizontal: spacing.medium,
-  justifyContent: "flex-start",
-}
-
-export const SPACING_LARGE: ViewStyle = {
-  marginVertical: spacing.large,
-}
-export const SPACING_MEDIUM: ViewStyle = {
-  marginVertical: spacing.medium,
-}
-export const CLOCK: ViewStyle = {
-  ...FULL,
-  justifyContent: "center",
-  alignItems: "center",
-}
-export const ROW: ViewStyle = {
+const ROW: ViewStyle = {
   flexDirection: "row",
   alignItems: "center",
 }
-export const CENTER_ITEMS: ViewStyle = {
-  alignItems: "center",
-}
-export const ROW_AROUND: ViewStyle = {
-  ...ROW,
-  justifyContent: "space-around",
-}
-export const ROW_BETWEEN: ViewStyle = {
-  ...ROW,
-  justifyContent: "space-between",
-}
-export const CONTENT: ViewStyle = {
-  ...FULL,
-  backgroundColor: color.palette.black,
-  paddingHorizontal: spacing.medium,
-  justifyContent: "flex-start",
-  padding: spacing.large,
-}
-export const JUSTIFY_START: ViewStyle = {
-  justifyContent: "flex-start",
-}
-export const SCREEN_ICON: TextStyle = {
-  color: color.palette.offWhite,
-  fontSize: 30,
-  lineHeight: 40,
-  textAlign: "center",
-  marginRight: spacing.medium,
-}
-export const SECTION_LABEL: TextStyle = {
-  ...TEXT,
-  ...typography.size.footnote,
-  color: color.palette.lighterGrey,
-  textTransform: "uppercase",
-  marginBottom: spacing.medium,
-  marginTop: spacing.medium,
-}
-export const SECTION: ViewStyle = {
-  borderBottomWidth: 1,
-  borderBottomColor: color.line,
-  borderTopWidth: 1,
-  borderTopColor: color.line,
-  paddingVertical: spacing.smaller,
-}
-export const WEEKDAY: ViewStyle = {
-  height: spacing.extraLarge,
-  width: spacing.extraLarge,
-  borderRadius: spacing.huge,
-  alignItems: "center",
-  justifyContent: "center",
-}
-export const WEEKDAY_LABEL: TextStyle = {
-  color: color.palette.black,
-  fontWeight: "600",
-}
-export const WEEKDAY_ON: ViewStyle = {
-  ...WEEKDAY,
-  backgroundColor: color.primary,
-}
-export const WEEKDAY_OFF: ViewStyle = {
-  ...WEEKDAY,
-  backgroundColor: color.palette.darkGrey,
-}
 
-export const SCHEDULE_LABEL: TextStyle = {
-  ...TEXT,
+const SCHEDULE_LABEL: TextStyle = {
+  ...commonStyles.TEXT,
   ...typography.size.title2,
 }
-export const SCHEDULE_BEDTIME_LABEL: TextStyle = {
-  ...SCHEDULE_LABEL,
-  color: color.palette.orangeDarker,
-}
-export const SCHEDULE_WAKETIME_LABEL: TextStyle = {
-  ...SCHEDULE_LABEL,
-  color: color.palette.orangeLighter,
-}
-export const SCHEDULE_HOUR: TextStyle = {
-  ...TEXT,
-  fontSize: 50,
-  color: color.palette.white,
+
+export const bedtimeScreenStyles = {
+  CONTAINER: {
+    ...commonStyles.FULL,
+    backgroundColor: color.palette.black,
+    paddingHorizontal: spacing.medium,
+    justifyContent: "flex-start",
+  } as ViewStyle,
+  SPACING_LARGE: {
+    marginVertical: spacing.large,
+  } as ViewStyle,
+  SPACING_MEDIUM: {
+    marginVertical: spacing.medium,
+  } as ViewStyle,
+  CLOCK: {
+    ...commonStyles.FULL,
+    justifyContent: "center",
+    alignItems: "center",
+  } as ViewStyle,
+  ROW: {
+    ...ROW,
+  },
+  CENTER_ITEMS: {
+    alignItems: "center",
+  } as ViewStyle,
+  ROW_AROUND: {
+    ...ROW,
+    justifyContent: "space-around",
+  } as ViewStyle,
+  ROW_BETWEEN: {
+    ...ROW,
+    justifyContent: "space-between",
+  } as ViewStyle,
+  CONTENT: {
+    ...commonStyles.FULL,
+    backgroundColor: color.palette.black,
+    paddingHorizontal: spacing.medium,
+    justifyContent: "flex-start",
+    padding: spacing.large,
+  } as ViewStyle,
+  JUSTIFY_START: {
+    justifyContent: "flex-start",
+  } as ViewStyle,
+  SCREEN_ICON: {
+    color: color.palette.offWhite,
+    fontSize: 30,
+    lineHeight: 40,
+    textAlign: "center",
+    marginRight: spacing.medium,
+  } as TextStyle,
+  SECTION: {
+    borderBottomWidth: 1,
+    borderBottomColor: color.line,
+    borderTopWidth: 1,
+    borderTopColor: color.line,
+    paddingVertical: spacing.smaller,
+  } as ViewStyle,
+  SECTION_LABEL: {
+    ...commonStyles.TEXT,
+    ...typography.size.footnote,
+    color: color.palette.lighterGrey,
+    textTransform: "uppercase",
+    marginBottom: spacing.medium,
+    marginTop: spacing.medium,
+  } as TextStyle,
+
+  SCHEDULE_BEDTIME_LABEL: {
+    ...SCHEDULE_LABEL,
+    color: color.palette.orangeDarker,
+  } as TextStyle,
+  SCHEDULE_WAKETIME_LABEL: {
+    ...SCHEDULE_LABEL,
+    color: color.palette.orangeLighter,
+  } as TextStyle,
+  SCHEDULE_HOUR: {
+    ...commonStyles.TEXT,
+    fontSize: 50,
+    color: color.palette.white,
+  } as TextStyle,
 }
