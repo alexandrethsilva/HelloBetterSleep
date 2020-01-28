@@ -1,9 +1,8 @@
 import React from "react"
-import { Image } from "react-native"
+import { View } from "react-native"
 import { presets } from "./wallpaper.presets"
 import { WallpaperProps } from "./wallpaper.props"
-
-const defaultImage = require("./bg.png")
+import { color } from "../../theme"
 
 /**
  * For your text displaying needs.
@@ -18,8 +17,6 @@ export function Wallpaper(props: WallpaperProps) {
   const presetToUse = presets[preset] || presets.stretch
   const style = { ...presetToUse, ...styleOverride }
 
-  // figure out which image to use
-  const source = backgroundImage || defaultImage
-
-  return <Image source={source} style={style} />
+  // return <Image source={source} style={style} />
+  return <View style={{ ...style, backgroundColor: color.palette.black }}></View>
 }

@@ -1,19 +1,15 @@
 import * as React from "react"
-import { View, Image, ImageStyle } from "react-native"
+import { View } from "react-native"
 import { IconProps } from "./icon.props"
 import { icons } from "./icons"
-
-const ROOT: ImageStyle = {
-  resizeMode: "contain",
-}
+import Ionicon from "react-native-vector-icons/Ionicons"
 
 export function Icon(props: IconProps) {
-  const { style: styleOverride, icon, containerStyle } = props
-  const style: ImageStyle = { ...ROOT, ...styleOverride }
+  const { style: styleOverride, size, icon, containerStyle } = props
 
   return (
     <View style={containerStyle}>
-      <Image style={style} source={icons[icon]} />
+      <Ionicon style={styleOverride} size={size || 20} name={icons[icon]} />
     </View>
   )
 }

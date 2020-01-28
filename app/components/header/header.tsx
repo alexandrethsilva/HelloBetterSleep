@@ -1,23 +1,11 @@
+import { ROOT, ICON, LEFT, RIGHT, TITLE, TITLE_MIDDLE } from "./header.styles"
+
 import * as React from "react"
 import { View, ViewStyle, TextStyle } from "react-native"
 import { HeaderProps } from "./header.props"
 import { Button, Icon, Text } from "../"
-import { spacing } from "../../theme"
-import { translate } from "../../i18n/"
 
-// static styles
-const ROOT: ViewStyle = {
-  flexDirection: "row",
-  paddingHorizontal: spacing[4],
-  alignItems: "center",
-  paddingTop: spacing[5],
-  paddingBottom: spacing[5],
-  justifyContent: "flex-start",
-}
-const TITLE: TextStyle = { textAlign: "center" }
-const TITLE_MIDDLE: ViewStyle = { flex: 1, justifyContent: "center" }
-const LEFT: ViewStyle = { width: 32 }
-const RIGHT: ViewStyle = { width: 32 }
+import { translate } from "../../i18n/"
 
 /**
  * Header that appears on many screens. Will hold navigation buttons and screen title.
@@ -39,7 +27,7 @@ export const Header: React.FunctionComponent<HeaderProps> = props => {
     <View style={{ ...ROOT, ...style }}>
       {leftIcon ? (
         <Button preset="link" onPress={onLeftPress}>
-          <Icon icon={leftIcon} />
+          <Icon icon={leftIcon} size={30} style={ICON} />
         </Button>
       ) : (
         <View style={LEFT} />
