@@ -35,7 +35,7 @@ export const color = {
   /**
    * A subtle color used for borders and lines.
    */
-  line: palette.offWhite,
+  line: "rgba(125, 125, 125, 0.2)",
   /**
    * The default color of text in many components.
    */
