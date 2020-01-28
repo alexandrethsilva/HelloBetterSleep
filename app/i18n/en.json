@@ -13,7 +13,16 @@
       "scheduleActivitySwitch": "Bedtime Schedule",
       "daysOfTheWeek": "Days of the week active",
       "bedTime": "Bedtime",
-      "wakeTime": "Wake Up"
+      "wakeTime": "Wake Up",
+      "weekdays": {
+        "0": "M",
+        "1": "T",
+        "2": "W",
+        "3": "T",
+        "4": "F",
+        "5": "S",
+        "6": "S"
+      }
     }
   },
   "storybook": {
