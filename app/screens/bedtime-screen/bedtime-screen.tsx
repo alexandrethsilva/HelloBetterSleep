@@ -6,7 +6,15 @@ import { ICON_BEDTIME, ICON_WAKETIME } from "./bedtime-screen.icons"
 import * as React from "react"
 import { observer } from "mobx-react-lite"
 import { Switch, View } from "react-native"
-import { Screen, Text, Header, Wallpaper, WeekdaySwitch, ClockSlider } from "../../components"
+import {
+  Screen,
+  Text,
+  Header,
+  Wallpaper,
+  WeekdaySwitch,
+  ClockSlider,
+  Clock,
+} from "../../components"
 import { useStores } from "../../models/root-store"
 import { color } from "../../theme"
 import { NavigationInjectedProps } from "react-navigation"
@@ -21,7 +29,6 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
   const { bedtimeStore } = useStores()
   const { schedule } = bedtimeStore
 
-  console.tron.log(schedule)
   return (
     <View testID="BedtimeScreen" style={commonStyles.FULL}>
       <Wallpaper />
@@ -106,7 +113,8 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
             </View>
           </View>
           <View style={bedtimeScreenStyles.CLOCK}>
-            <ClockSlider
+            <Clock />
+            {/* <ClockSlider
               angleStart={schedule.start}
               angleLength={schedule.end}
               onUpdate={({ angleStart: start, angleLength: end }) =>
@@ -134,7 +142,7 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
                   {ICON_BEDTIME}
                 </G>
               }
-            />
+            /> */}
           </View>
         </View>
       </Screen>

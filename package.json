@@ -27,8 +27,10 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.5.1",
     "@react-native-community/masked-view": "0.1.5",
+    "@types/d3": "5.7.2",
     "apisauce": "1.0.3",
     "commitizen": "4.0.3",
+    "d3": "5.15.0",
     "d3-interpolate": "1.4.0",
     "i18n-js": "^3.0.11",
     "lodash.range": "3.2.0",
