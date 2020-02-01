@@ -5,8 +5,8 @@ test("can be created", () => {
   const instance: BedtimeSchedule = BedtimeScheduleModel.create({
     isActive: false,
     weekdays: repeat(false, 7),
-    start: undefined,
-    end: undefined,
+    start: { h: 0, m: 0 },
+    end: { h: 0, m: 0 },
   })
 
   expect(instance).toBeTruthy()

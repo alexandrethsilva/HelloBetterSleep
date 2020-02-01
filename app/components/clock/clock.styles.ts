@@ -17,25 +17,53 @@ export const clockProps = (clockRadius, margin) => ({
     strokeWidth: clockRadius / 50,
   } as CircleProps,
   CENTER_SCREW: {
-    fill: color.palette.white,
+    fill: color.primaryDarker,
     r: clockRadius / 20,
-    stroke: color.palette.grey,
-    strokeWidth: clockRadius / 50,
+    stroke: color.palette.white,
+    strokeWidth: clockRadius / 16 / 4,
+  } as CircleProps,
+  CENTER_SCREW_PIN: {
+    fill: color.primaryDarker,
+    r: clockRadius / 40,
   } as CircleProps,
   HAND_SECOND: {
-    stroke: color.palette.lighterGrey,
+    stroke: color.primaryDarker,
     strokeLinecap: "square",
     strokeWidth: clockRadius / 66,
   } as LineProps,
-  HAND_MINUTE: {
-    stroke: color.palette.offWhite,
+  HAND_MINUTE_BAR: {
+    y1: -clockRadius / 6,
+    stroke: color.palette.black,
     strokeLinecap: "round",
     strokeWidth: clockRadius / 25,
   } as LineProps,
-  HAND_HOUR: {
-    stroke: color.palette.white,
+  HAND_MINUTE_BAR_STROKE: {
+    y1: -clockRadius / 6,
+    stroke: color.palette.offWhite,
+    strokeLinecap: "round",
+    strokeWidth: clockRadius / 25 + clockRadius / 16 / 2,
+  } as LineProps,
+  HAND_MINUTE_LINE: {
+    stroke: color.palette.offWhite,
+    strokeLinecap: "round",
+    strokeWidth: clockRadius / 16 / 4,
+  } as LineProps,
+  HAND_HOUR_BAR: {
+    y1: -clockRadius / 6,
+    stroke: color.palette.black,
     strokeLinecap: "round",
     strokeWidth: clockRadius / 16,
+  } as LineProps,
+  HAND_HOUR_BAR_STROKE: {
+    y1: -clockRadius / 6,
+    stroke: color.palette.white,
+    strokeLinecap: "round",
+    strokeWidth: clockRadius / 16 + clockRadius / 16 / 2,
+  } as LineProps,
+  HAND_HOUR_LINE: {
+    stroke: color.palette.white,
+    strokeLinecap: "round",
+    strokeWidth: clockRadius / 16 / 4,
   } as LineProps,
   LABEL_HOUR: {
     fill: color.palette.white,

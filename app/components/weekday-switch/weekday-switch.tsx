@@ -20,7 +20,7 @@ export interface WeekdaySwitchProps {
   isOn: boolean
 
   /**
-   * Whether the switch is active or not
+   * The switch callback function
    */
   onChange: () => void
 
@@ -38,7 +38,7 @@ export interface WeekdaySwitchProps {
 export function WeekdaySwitch(props: WeekdaySwitchProps) {
   // grab the props
   const { tx, isInteractive, isOn, onChange, style } = props
-  console.tron.log("tx", tx)
+
   return (
     <View
       style={
