@@ -1,23 +1,11 @@
 import { commonStyles } from "../../styles"
 import { bedtimeScreenStyles } from "./bedtime-screen.styles"
 
-import { ICON_BEDTIME, ICON_WAKETIME } from "./bedtime-screen.icons"
-
 import * as React from "react"
 import { observer } from "mobx-react-lite"
 import { Switch, View } from "react-native"
-import {
-  Screen,
-  Text,
-  Header,
-  Wallpaper,
-  WeekdaySwitch,
-  SleepDial,
-  // ClockSlider,
-  // Clock,
-} from "../../components"
+import { Screen, Text, Header, Wallpaper, WeekdaySwitch, SleepDial } from "../../components"
 import { useStores } from "../../models/root-store"
-import { color } from "../../theme"
 import { NavigationInjectedProps } from "react-navigation"
 import Ionicon from "react-native-vector-icons/Ionicons"
 
@@ -30,20 +18,19 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
   const { schedule } = bedtimeStore
 
   return (
-    <View testID="BedtimeScreen" style={commonStyles.FULL}>
+    <View testID="BedtimeScreen" style={commonStyles.FLEX.FULL}>
       <Wallpaper />
       <Screen
-        style={{ ...bedtimeScreenStyles.CONTAINER, ...bedtimeScreenStyles.JUSTIFY_START }}
+        style={{ ...bedtimeScreenStyles.CONTAINER, ...commonStyles.FLEX.CONTENT.START }}
         preset="fixed"
-        backgroundColor={color.transparent}
       >
         <Header
           headerTx="sleepTracking.bedtimeScreen.header"
           leftIcon="back"
           onLeftPress={goBack}
         />
-        <View style={{ ...bedtimeScreenStyles.CONTENT, ...bedtimeScreenStyles.JUSTIFY_START }}>
-          <View style={bedtimeScreenStyles.ROW}>
+        <View style={{ ...bedtimeScreenStyles.CONTENT, ...commonStyles.FLEX.CONTENT.START }}>
+          <View style={{ ...commonStyles.FLEX.ROW, ...commonStyles.FLEX.ITEMS_CENTER }}>
             <Ionicon name={"ios-bed"} style={bedtimeScreenStyles.SCREEN_ICON} />
             <Text
               preset="header"
@@ -51,16 +38,21 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
               style={commonStyles.TEXT}
             />
           </View>
-          <View style={{ ...bedtimeScreenStyles.ROW_BETWEEN, ...bedtimeScreenStyles.SECTION }}>
+          <View
+            style={{
+              ...commonStyles.FLEX.ROW_BETWEEN,
+              ...bedtimeScreenStyles.SECTION,
+            }}
+          >
             <Text tx="sleepTracking.bedtimeScreen.scheduleActivitySwitch"></Text>
             <Switch value={schedule.isActive} onValueChange={schedule.toggleActive} />
           </View>
-          <View style={bedtimeScreenStyles.SPACING_MEDIUM}>
+          <View>
             <Text
               tx="sleepTracking.bedtimeScreen.daysOfTheWeek"
               style={bedtimeScreenStyles.SECTION_LABEL}
             ></Text>
-            <View style={bedtimeScreenStyles.ROW_BETWEEN}>
+            <View style={commonStyles.FLEX.ROW_BETWEEN}>
               {schedule.weekdays.map((day, index) => (
                 <WeekdaySwitch
                   key={index}
@@ -72,8 +64,8 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
               ))}
             </View>
           </View>
-          <View style={{ ...bedtimeScreenStyles.ROW_AROUND, ...bedtimeScreenStyles.SPACING_LARGE }}>
-            <View style={bedtimeScreenStyles.CENTER_ITEMS}>
+          <View style={{ ...commonStyles.FLEX.ROW_AROUND, ...bedtimeScreenStyles.SPACING_LARGE }}>
+            <View style={{ ...commonStyles.FLEX.ITEMS_CENTER, ...commonStyles.FLEX.FULL }}>
               <Text
                 tx="sleepTracking.bedtimeScreen.bedTime"
                 style={
@@ -92,7 +84,7 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
                 {schedule.bedTime.h}:{schedule.bedTime.m}
               </Text>
             </View>
-            <View style={bedtimeScreenStyles.CENTER_ITEMS}>
+            <View style={{ ...commonStyles.FLEX.ITEMS_CENTER, ...commonStyles.FLEX.FULL }}>
               <Text
                 tx="sleepTracking.bedtimeScreen.wakeTime"
                 style={
@@ -113,37 +105,7 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
             </View>
           </View>
           <View style={bedtimeScreenStyles.CLOCK}>
-            <SleepDial />
-            {/* <Clock /> */}
-            {/* <ClockSlider
-              angleStart={schedule.start}
-              angleLength={schedule.end}
-              onUpdate={({ angleStart: start, angleLength: end }) =>
-                schedule.isActive && schedule.setScheduledTime({ start, end })
-              }
-              gradientColorSegments={20}
-              trackWidth={45}
-              radius={140}
-              gradientColorFrom={
-                schedule.isActive ? color.palette.orangeDarker : color.palette.darkerGrey
-              }
-              gradientColorTo={
-                schedule.isActive ? color.palette.orangeLighter : color.palette.darkGrey
-              }
-              showClockFace
-              clockFaceColor={"#8D8E96"}
-              trackColor={"#1B1C1E"}
-              handleStopIcon={
-                <G scale="1.1" transform={{ translate: "-8, -8" }}>
-                  {ICON_WAKETIME}
-                </G>
-              }
-              handleStartIcon={
-                <G scale="1.1" transform={{ translate: "-8, -8" }}>
-                  {ICON_BEDTIME}
-                </G>
-              }
-            /> */}
+            <SleepDial sleepDialRadius={140} />
           </View>
         </View>
       </Screen>

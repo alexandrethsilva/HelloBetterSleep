@@ -11,8 +11,8 @@ export const BedtimeStoreModel = types
     schedule: types.optional(BedtimeScheduleModel, {
       isActive: false,
       weekdays: repeat(false, 7),
-      start: { h: 2, m: 0 },
-      end: { h: 7, m: 0 },
+      start: { h: 0, m: 10 },
+      end: { h: 6, m: 55 },
     }),
   })
   .views(self => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars

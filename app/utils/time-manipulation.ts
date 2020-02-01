@@ -40,7 +40,7 @@ export const milisecondScale = d3
 
 /**
  * Takes the full angle, divides by the total degrees of a circle,
- * and multiplies by the hourScale (in degrees) of the given time.
+ * and multiplies by the hourScale (in radian degrees) of the given time.
  */
 export const calculateAngleFromTime = ({ h, m }: Time) =>
   (fullAngle / 360) * hourScale((h % 12) + m / 60)
@@ -57,6 +57,13 @@ export const calculateTimeFromAngle = (angle: number): Time => {
 
   return { h, m }
 }
+
+export const calculateMinutesFromTime = ({ h, m }: Time): number => h * 60 + m
+
+export const calculateTimeFromMinutes = (minutes: number): Time => ({
+  h: Math.floor(minutes / 60),
+  m: minutes % 60,
+})
 
 export const roundAngleToFives = (angle: number): number => {
   const fiveMinuteAngle = ((2 * Math.PI) / 60) * 5
