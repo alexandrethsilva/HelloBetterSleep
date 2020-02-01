@@ -12,13 +12,13 @@ import {
   Header,
   Wallpaper,
   WeekdaySwitch,
-  ClockSlider,
-  Clock,
+  SleepDial,
+  // ClockSlider,
+  // Clock,
 } from "../../components"
 import { useStores } from "../../models/root-store"
 import { color } from "../../theme"
 import { NavigationInjectedProps } from "react-navigation"
-import { G } from "react-native-svg"
 import Ionicon from "react-native-vector-icons/Ionicons"
 
 export interface BedtimeScreenProps extends NavigationInjectedProps<{}> {}
@@ -113,7 +113,8 @@ export const BedtimeScreen: React.FunctionComponent<BedtimeScreenProps> = observ
             </View>
           </View>
           <View style={bedtimeScreenStyles.CLOCK}>
-            <Clock />
+            <SleepDial />
+            {/* <Clock /> */}
             {/* <ClockSlider
               angleStart={schedule.start}
               angleLength={schedule.end}
