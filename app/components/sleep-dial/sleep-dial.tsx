@@ -77,22 +77,22 @@ export const SleepDial: React.FunctionComponent<SleepDialProps> = props => {
 
   const sleepPanResponder = PanResponder.create({
     // Ask to be the responder
-    onStartShouldSetPanResponder: (evt, gestureState) => schedule.isActive,
-    onStartShouldSetPanResponderCapture: (evt, gestureState) => schedule.isActive,
-    onMoveShouldSetPanResponder: (evt, gestureState) => schedule.isActive,
-    onMoveShouldSetPanResponderCapture: (evt, gestureState) => schedule.isActive,
+    onStartShouldSetPanResponder: () => schedule.isActive,
+    onStartShouldSetPanResponderCapture: () => schedule.isActive,
+    onMoveShouldSetPanResponder: () => schedule.isActive,
+    onMoveShouldSetPanResponderCapture: () => schedule.isActive,
 
     // Show feedback that the gesture has been recognised
-    onPanResponderGrant: (evt, gestureState) => {
+    onPanResponderGrant: () => {
       setIsUpdating(true)
     },
 
-    onPanResponderRelease: (evt, gestureState) => {
+    onPanResponderRelease: () => {
       setIsUpdating(false)
     },
 
     // Triggered on every change in the X, Y coordinate of the gesture
-    onPanResponderMove: (evt, { moveX, moveY }) => {
+    onPanResponderMove: (_, { moveX, moveY }) => {
       const movementAngle =
         Math.atan2(moveY - sleepDialComponentCenter.y, moveX - sleepDialComponentCenter.x) +
         Math.PI / 2
@@ -108,22 +108,22 @@ export const SleepDial: React.FunctionComponent<SleepDialProps> = props => {
 
   const wakePanResponder = PanResponder.create({
     // Ask to be the responder
-    onStartShouldSetPanResponder: (evt, gestureState) => schedule.isActive,
-    onStartShouldSetPanResponderCapture: (evt, gestureState) => schedule.isActive,
-    onMoveShouldSetPanResponder: (evt, gestureState) => schedule.isActive,
-    onMoveShouldSetPanResponderCapture: (evt, gestureState) => schedule.isActive,
+    onStartShouldSetPanResponder: () => schedule.isActive,
+    onStartShouldSetPanResponderCapture: () => schedule.isActive,
+    onMoveShouldSetPanResponder: () => schedule.isActive,
+    onMoveShouldSetPanResponderCapture: () => schedule.isActive,
 
     // Show feedback that the gesture has been recognised
-    onPanResponderGrant: (evt, gestureState) => {
+    onPanResponderGrant: () => {
       setIsUpdating(true)
     },
 
-    onPanResponderRelease: (evt, gestureState) => {
+    onPanResponderRelease: () => {
       setIsUpdating(false)
     },
 
     // Triggered on every change in the X, Y coordinate of the gesture
-    onPanResponderMove: (evt, { moveX, moveY }) => {
+    onPanResponderMove: (_, { moveX, moveY }) => {
       const movementAngle =
         Math.atan2(moveY - sleepDialComponentCenter.y, moveX - sleepDialComponentCenter.x) +
         Math.PI / 2
@@ -163,8 +163,8 @@ export const SleepDial: React.FunctionComponent<SleepDialProps> = props => {
       bedtimeAngle === 0
         ? bedtimeAngle
         : bedtimeAngle > Math.PI
-        ? -(fullAngle % bedtimeAngle)
-        : -(fullAngle - bedtimeAngle)
+          ? -(fullAngle % bedtimeAngle)
+          : -(fullAngle - bedtimeAngle)
     endAngle = waketimeAngle
   } else {
     /**
@@ -183,8 +183,8 @@ export const SleepDial: React.FunctionComponent<SleepDialProps> = props => {
       waketimeAngle === 0
         ? fullAngle
         : waketimeAngle > Math.PI
-        ? waketimeAngle % fullAngle
-        : waketimeAngle
+          ? waketimeAngle % fullAngle
+          : waketimeAngle
   }
 
   const sleepDialArcOptions: d3.DefaultArcObject = {
