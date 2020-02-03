@@ -5,7 +5,7 @@ import { ViewStyle, TextStyle } from "react-native"
 
 export const welcomeScreenStyles = {
   CONTAINER: {
-    ...commonStyles.FULL,
+    ...commonStyles.FLEX.FULL,
     backgroundColor: color.palette.black,
     paddingHorizontal: spacing.medium,
     justifyContent: "center",
@@ -40,6 +40,7 @@ export const welcomeScreenStyles = {
     marginTop: spacing.large,
   } as TextStyle,
   CONTINUE: {
+    ...commonStyles.BUTTON,
     paddingVertical: spacing.medium,
     paddingHorizontal: spacing.medium,
     backgroundColor: color.primaryDarker,
@@ -48,6 +49,7 @@ export const welcomeScreenStyles = {
     ...commonStyles.TEXT,
     ...commonStyles.BOLD,
     ...typography.size.headline,
+    color: color.palette.black,
     letterSpacing: 2,
   } as TextStyle,
   FOOTER: { backgroundColor: color.palette.black } as ViewStyle,

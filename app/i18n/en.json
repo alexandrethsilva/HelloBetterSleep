@@ -13,6 +13,10 @@
       "scheduleActivitySwitch": "Bedtime Schedule",
       "daysOfTheWeek": "Days of the week active",
       "bedTime": "Bedtime",
+      "timeUnits": {
+        "hour": "hr",
+        "minute": "min"
+      },
       "wakeTime": "Wake Up",
       "weekdays": {
         "0": "M",

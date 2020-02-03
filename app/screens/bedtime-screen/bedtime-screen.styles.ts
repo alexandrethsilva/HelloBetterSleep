@@ -3,19 +3,15 @@ import { commonStyles } from "../../styles"
 import { color, spacing, typography } from "../../theme"
 import { ViewStyle, TextStyle } from "react-native"
 
-const ROW: ViewStyle = {
-  flexDirection: "row",
-  alignItems: "center",
-}
-
 const SCHEDULE_LABEL: TextStyle = {
   ...commonStyles.TEXT,
-  ...typography.size.title2,
+  ...typography.size.title3,
+  fontWeight: "500",
 }
 
 export const bedtimeScreenStyles = {
   CONTAINER: {
-    ...commonStyles.FULL,
+    ...commonStyles.FLEX.FULL,
     backgroundColor: color.palette.black,
     paddingHorizontal: spacing.medium,
     justifyContent: "flex-start",
@@ -27,32 +23,14 @@ export const bedtimeScreenStyles = {
     marginVertical: spacing.medium,
   } as ViewStyle,
   CLOCK: {
-    ...commonStyles.FULL,
-    justifyContent: "center",
+    ...commonStyles.FLEX.FULL,
+    justifyContent: "flex-start",
     alignItems: "center",
-  } as ViewStyle,
-  ROW: {
-    ...ROW,
-  },
-  CENTER_ITEMS: {
-    alignItems: "center",
-  } as ViewStyle,
-  ROW_AROUND: {
-    ...ROW,
-    justifyContent: "space-around",
-  } as ViewStyle,
-  ROW_BETWEEN: {
-    ...ROW,
-    justifyContent: "space-between",
   } as ViewStyle,
   CONTENT: {
-    ...commonStyles.FULL,
+    ...commonStyles.FLEX.FULL,
     backgroundColor: color.palette.black,
     paddingHorizontal: spacing.medium,
-    justifyContent: "flex-start",
-    padding: spacing.large,
-  } as ViewStyle,
-  JUSTIFY_START: {
     justifyContent: "flex-start",
   } as ViewStyle,
   SCREEN_ICON: {
@@ -63,6 +41,7 @@ export const bedtimeScreenStyles = {
     marginRight: spacing.medium,
   } as TextStyle,
   SECTION: {
+    ...commonStyles.FLEX.ITEMS_CENTER,
     borderBottomWidth: 1,
     borderBottomColor: color.line,
     borderTopWidth: 1,

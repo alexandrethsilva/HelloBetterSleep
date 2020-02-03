@@ -1,8 +1,8 @@
 import * as React from "react"
 import { G, Path } from "react-native-svg"
 
-export const ICON_WAKETIME = (
-  <G>
+export const IconWaketime = () => (
+  <G scale="1.1" transform={{ translate: "-8, -8" }}>
     <Path
       d="M2,12.9h1.7h3h2.7h3H14c0.4,0,0.7-0.3,0.7-0.7c0-0.4-0.3-0.7-0.7-0.7c-0.9,0-1.7-0.7-1.7-1.7v-4
       c0-2.1-1.5-3.8-3.4-4.2C9,1.6,9,1.4,9,1.3c0-0.5-0.4-1-1-1c-0.5,0-1,0.4-1,1c0,0.2,0,0.3,0.1,0.4c-2,0.4-3.4,2.1-3.4,4.2v4
@@ -12,8 +12,8 @@ export const ICON_WAKETIME = (
   </G>
 )
 
-export const ICON_BEDTIME = (
-  <G>
+export const IconBedtime = () => (
+  <G scale="1.1" transform={{ translate: "-8, -8" }}>
     <Path
       d="M11.7,10.5c-3.6,0-6.4-2.9-6.4-6.4c0-0.7,0.1-1.4,0.4-2.1C3.1,2.9,1.2,5.3,1.2,8.1c0,3.6,2.9,6.4,6.4,6.4
       c2.8,0,5.2-1.8,6.1-4.4C13.1,10.4,12.4,10.5,11.7,10.5z"

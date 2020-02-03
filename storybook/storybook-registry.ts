@@ -1,3 +1,4 @@
+require("../app/components/sleep-time-display/sleep-time-display.story")
 require("../app/components/sleep-dial/sleep-dial.story")
 require("../app/components/clock/clock.story")
 require("../app/components/weekday-switch/weekday-switch.story")

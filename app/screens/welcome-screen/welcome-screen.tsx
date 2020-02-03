@@ -17,7 +17,7 @@ export const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = props 
   ])
 
   return (
-    <View testID="WelcomeScreen" style={commonStyles.FULL}>
+    <View testID="WelcomeScreen" style={commonStyles.FLEX.FULL}>
       <Wallpaper />
       <Screen
         style={welcomeScreenStyles.CONTAINER}
