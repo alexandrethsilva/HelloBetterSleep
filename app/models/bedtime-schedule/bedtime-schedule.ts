@@ -1,6 +1,13 @@
+import {
+  calculateTimeFromMinutes,
+  calculateMinutesFromHour,
+  calculateMinutesFromTime,
+  Time,
+  TimeText,
+  padTime,
+} from "./../../utils/time-manipulation"
 import { Instance, SnapshotOut, types } from "mobx-state-tree"
-import { repeat } from "ramda"
-import { padTime, TimeText } from "../../utils/time-manipulation"
+import { repeat, add, subtract, compose } from "ramda"
 
 const TimeModel = types.model("Time").props({
   h: types.optional(types.number, 0),
@@ -24,6 +31,44 @@ export const BedtimeScheduleModel = types
     },
     get wakeTime(): TimeText {
       return padTime(self.end)
+    },
+    get startInMinutes(): number {
+      return calculateMinutesFromTime(self.start)
+    },
+    get endInMinutes(): number {
+      return calculateMinutesFromTime(self.end)
+    },
+  }))
+  .views(self => ({
+    get sleepTime(): TimeText {
+      const { startInMinutes, endInMinutes, end } = self
+
+      let totalEstimatedSleep: Time
+      if (startInMinutes >= endInMinutes) {
+        // Estimated sleep until 12
+        const until12: Time = calculateTimeFromMinutes(12 * 60 - startInMinutes)
+
+        const hourSum = until12.h + end.h
+        const minuteSum = until12.m + end.m
+
+        // Total estimated sleep
+        if (startInMinutes === endInMinutes) {
+          totalEstimatedSleep = { h: 12, m: 0 }
+        } else {
+          totalEstimatedSleep = {
+            h: minuteSum > 60 ? hourSum + 1 : hourSum,
+            m: minuteSum % 60,
+          }
+        }
+      } else {
+        // Simple time difference between start and end
+        totalEstimatedSleep = compose(
+          calculateTimeFromMinutes,
+          subtract,
+        )(endInMinutes, startInMinutes)
+      }
+
+      return padTime(totalEstimatedSleep)
     },
   }))
   .actions(self => ({
